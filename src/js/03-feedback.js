@@ -45,7 +45,8 @@ function onInput(evt) {
 
 }
 
-if (!load(KEY)) {
+function check() {
+    if (!load(KEY)) {
     input.value = '',
     textarea.value = ''
 } else {
@@ -53,6 +54,9 @@ if (!load(KEY)) {
     textarea.value = load(KEY).message
 }
 
+}
+
+check()
 
 form.addEventListener('submit', onSubmit)
 
