@@ -36,25 +36,27 @@ form.addEventListener('input', onInput)
 function onInput(evt) {
     evt.preventDefault();
     
+    const {
+        elements: { email, message }
+    } = evt.currentTarget    
+
     data = {
-        email: evt.currentTarget.elements.email.value,
-        message: evt.currentTarget.elements.message.value,
+        email: email.value,
+        message: message.value,
     }
 
     save(KEY, data)
-
 }
 
 function check() {
-    if (!load(KEY)) {
+    const result = load(KEY)
+    if (!result) {
     input.value = '',
     textarea.value = ''
 } else {
-    input.value = load(KEY).email
-    textarea.value = load(KEY).message
-}
-
-}
+    input.value = result.email
+    textarea.value = result.message
+} }
 
 check()
 
